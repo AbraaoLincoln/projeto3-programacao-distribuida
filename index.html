@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <!-- Custom -->
+    <link rel="stylesheet" href="./style.css">
     <script src="./map.js"></script>
 </head>
 
-<body class="d-flex justify-content-center">
-    <div class="col-10 mt-2 shadow rounded p-2">
+<body class="d-flex justify-content-center position-relative">
+    <div class="col-10 mt-2 shadow rounded p-2" id="container-map">
         <form class="col-12 row g-3">
             <div class="col-9">
               <input type="text" class="form-control" id="bairro" placeholder="Digite aqui o nome do bairro">
@@ -25,9 +26,38 @@
               <button type="submit" class="col-12 btn btn-primary mb-3">Buscar serviços</button>
             </div>
           </form>
-        <div class="col-12" style="height: 50vh;" id="map"></div>
+        <div class="col-12 position-relative" style="height: 50vh;">
+          <div class="col-12" style="height: 50vh;" id="map"></div>
+          <button class="btn btn-primary ms-2 shadow" id="addButton" type="button" onclick="showFormService()"> + </button>
+        </div>
     </div>
 
+    <form id="form-service" class="formService col-10 position-absolute justify-content-center align-items-center d-none">
+      <div class="col-11 bg-white p-2 rounded d-flex flex-column justify-content-center align-items-center" id="div-bg-inputs">
+        <div class="input-group mb-3 col-12">
+          <h3 class="col-11 ms-1 text-center">Cadastrar Serviço</h3>
+          <button type="button" class="btn-close" aria-label="Close" onclick="hideFormService()"></button>
+        </div>
+        <div class="input-group mb-3 col-12">
+          <span class="input-group-text" >Bairro</span>
+          <input type="text" class="form-control" name="bairro" aria-describedby="basic-addon3">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">latitude</span>
+          <input type="text" class="form-control" name="latitude" aria-describedby="basic-addon3">
+          <span class="input-group-text ms-2">longitude</span>
+          <input type="text" class="form-control" name="longitude" aria-describedby="basic-addon3">
+        </div>
+        <div class="input-group mb-3 col-12">
+          <span class="input-group-text">Serviço</span>
+          <input type="text" class="form-control" name="servico" aria-describedby="basic-addon3">
+        </div>
+        <div class="input-group mb-3 col-12"></div>
+          <button class="btn btn-primary shadow col-12" type="button"> Cadastrar </button>
+          <!-- <button class="btn btn-primary shadow" type="button">  </button> -->
+        </div>
+      </div>
+    </form>
 </body>
 
 </html>
